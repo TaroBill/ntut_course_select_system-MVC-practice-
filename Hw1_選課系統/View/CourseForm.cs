@@ -13,9 +13,11 @@ namespace Homework_選課系統
     public partial class CourseForm : Form
     {
         private readonly CourseFormPresentationModel _courseFormPresentationModel;
-        public CourseForm(CourseFormPresentationModel inputCourseFormPresentationModel)
+        private readonly Data _yourData;
+        public CourseForm(CourseFormPresentationModel inputCourseFormPresentationModel, Data yourdata)
         {
             InitializeComponent();
+            _yourData = yourdata;
             _courseFormPresentationModel = inputCourseFormPresentationModel;
             _courseFormPresentationModel.ButtonChangedEnable += UpdateButton;
             _courseFormPresentationModel.CourseChanged += UpdateCourse;
@@ -53,7 +55,7 @@ namespace Homework_選課系統
         //點選查看已選課的內容
         private void ClickResultButton(object sender, EventArgs e)
         {
-            CourseSelectionResultForm1 courseSelectionResultForm = new CourseSelectionResultForm1(_courseFormPresentationModel.YourData);
+            CourseSelectionResultForm1 courseSelectionResultForm = new CourseSelectionResultForm1(_yourData);
             courseSelectionResultForm.Show();
         }
 

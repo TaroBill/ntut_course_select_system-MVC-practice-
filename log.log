@@ -1,3 +1,69 @@
 ResolveFWLinkAccountManager statusCode is redirect: 'True'
 ResolveFWLinkAccountManager resovled fwlink from 'https://go.microsoft.com/fwlink/?LinkID=415837' to 'https://app.vssps.visualstudio.com/'
 given range is not current
+TestWindow package loaded
+Informational: 記錄層級已設定為 資訊性 (預設)。
+Informational: 記錄層級已設定為 資訊性 (預設)。
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:41
+TableControl: About to update entries 2021/10/30 上午 11:52:48:42
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:43
+TableControl: Updating entries 2021/10/30 上午 11:52:48:45
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:48
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:51
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:55
+TableControl: Updating entries (UI thread) 2021/10/30 上午 11:52:48:168
+TableControl: Refreshing UI 2021/10/30 上午 11:52:48:169
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:169
+TableControl: About to update entries 2021/10/30 上午 11:52:48:170
+TableControl: Updating entries 2021/10/30 上午 11:52:48:179
+TableControl: Updating entries (UI thread) 2021/10/30 上午 11:52:48:181
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:181
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:183
+TableControl: Refreshing UI 2021/10/30 上午 11:52:48:184
+TableControl: QueueUpdate 2021/10/30 上午 11:52:48:184
+TableControl: About to update entries 2021/10/30 上午 11:52:48:185
+TableControl: Updating entries 2021/10/30 上午 11:52:48:185
+TableControl: Updating entries (UI thread) 2021/10/30 上午 11:52:48:204
+Informational: 已在 0.238 秒內從解決方案快取載入 0 筆測試記錄。
+Informational: 測試資料存放區在 0.019 秒內開啟。
+TableControl: QueueUpdate 2021/10/30 上午 11:52:52:303
+TableControl: About to update entries 2021/10/30 上午 11:52:52:303
+TableControl: Updating entries 2021/10/30 上午 11:52:52:304
+TableControl: Updating entries (UI thread) 2021/10/30 上午 11:52:52:304
+TableControl: Refreshing UI 2021/10/30 上午 11:52:52:304
+Informational: ========== 開始測試探索 ==========
+Warning: D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\bin\Debug\Hw1_選課系統.exe 中未提供任何測試。請確定已登錄了測試探索程式與執行程式，且平台與 Framework 版本設定皆正確，然後再試一次。
+Informational: ========== 測試探索已完成: 在 2.7 秒 找到 0 項測試 ==========
+given range is not current
+TestWindow package loaded
+Informational: 記錄層級已設定為 資訊性 (預設)。
+Informational: 記錄層級已設定為 資訊性 (預設)。
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:214
+TableControl: About to update entries 2021/11/1 下午 12:14:54:214
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:215
+TableControl: Updating entries 2021/11/1 下午 12:14:54:218
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:219
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:222
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:227
+TableControl: Updating entries (UI thread) 2021/11/1 下午 12:14:54:363
+TableControl: Refreshing UI 2021/11/1 下午 12:14:54:363
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:364
+TableControl: About to update entries 2021/11/1 下午 12:14:54:364
+TableControl: Updating entries 2021/11/1 下午 12:14:54:375
+TableControl: Updating entries (UI thread) 2021/11/1 下午 12:14:54:453
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:453
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:455
+TableControl: Refreshing UI 2021/11/1 下午 12:14:54:456
+TableControl: QueueUpdate 2021/11/1 下午 12:14:54:456
+TableControl: About to update entries 2021/11/1 下午 12:14:54:456
+TableControl: Updating entries 2021/11/1 下午 12:14:54:457
+TableControl: Updating entries (UI thread) 2021/11/1 下午 12:14:54:460
+Informational: 測試資料存放區在 0.062 秒內開啟。
+TableControl: QueueUpdate 2021/11/1 下午 12:14:56:127
+TableControl: About to update entries 2021/11/1 下午 12:14:56:127
+TableControl: Updating entries 2021/11/1 下午 12:14:56:127
+TableControl: Updating entries (UI thread) 2021/11/1 下午 12:14:56:128
+TableControl: Refreshing UI 2021/11/1 下午 12:14:56:128
+Informational: ========== 開始測試探索 ==========
+Warning: D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\bin\Debug\Hw1_選課系統.exe 中未提供任何測試。請確定已登錄了測試探索程式與執行程式，且平台與 Framework 版本設定皆正確，然後再試一次。
+Informational: ========== 測試探索已完成: 在 1.5 秒 找到 0 項測試 ==========

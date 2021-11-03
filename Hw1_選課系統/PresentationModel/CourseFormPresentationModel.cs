@@ -20,17 +20,14 @@ namespace Homework_選課系統
         }
 
         private const string POSITIVE = "True";
-        public Data YourData
-        {
-            get; set;
-        }
+        private readonly Data _yourData;
         private readonly CourseWebCrawlerModel _courseWebCrawlerModel;
 
         public CourseFormPresentationModel(CourseWebCrawlerModel courseWebCrawlerModel, Data inputData)
         {
             _courseWebCrawlerModel = courseWebCrawlerModel;
-            YourData = inputData;
-            YourData.YourCourseChangedEvent += RefreshAllCourseList;
+            _yourData = inputData;
+            _yourData.CourseChanged += RefreshAllCourseList;
             CurrentTabPage = 0;
         }
 
@@ -52,7 +49,6 @@ namespace Homework_選課系統
         public void RefreshAllCourseList()
         {
             AddCourse(CurrentTabPage);
-            NotifyCourseObserver();
         }
 
         //確認有checkbox被選取
@@ -79,18 +75,20 @@ namespace Homework_選課系統
         //將所選的課程加入已選課程
         public string AddToYourCourse()
         {
-            string returnValue = _courseWebCrawlerModel.CourseConflictResult(CourseList, YourData.YourCourse);
+            string returnValue = _courseWebCrawlerModel.CourseConflictResult(CourseList, _yourData.YourCourse);
             if (returnValue == "")
             {
-                for (int index = CourseList.Count() - 1; index >= 0; index--)
-                    if (CourseList.ElementAt(index)[0] == POSITIVE)
+                for (int index = _allCourseList.Count() - 1; index >= 0; index--)
+                {
+                    if (_allCourseList.ElementAt(index)[0] == POSITIVE)
                     {
-                        YourData.YourCourse.Add(new Course(CourseList[index]));
-                        CourseList.ElementAt(index)[0] = "False";
-                        CourseList.RemoveAt(index);
+                        _yourData.AddCourse(new Course(_allCourseList[index]));
+                        _allCourseList.ElementAt(index)[0] = "False";
+                        _allCourseList.RemoveAt(index);
                     }
+                }
                 SendButtonEnable = false;
-                YourData.NotifyYourCourseChanged();
+                _yourData.NotifyCourseObserver();
                 const string SUCCESS = "加選成功";
                 return SUCCESS;
             }
@@ -132,34 +130,12 @@ namespace Homework_選課系統
             return courses;
         }
 
-        private List<string[]> courseFromWebComputerScience;
-        private List<string[]> courseFromWebEletronicScience;
-        //爬蟲讀取Course到list裡
+        //爬蟲讀取Course到list裡，若爬蟲過則從list讀取Course
         public void AddCourse(int mode)
         {
-            const string COMPUTER_SCIENCE_GRADE_THREE = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2433";
-            const string ELECTRONIC_SCIENCE_GRADE_THREE = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2423";
-            List<string[]> storedCourseList;
-            switch (mode)
-            {
-                case 0:
-                    if (courseFromWebComputerScience == null)
-                        courseFromWebComputerScience = _courseWebCrawlerModel.GetData(COMPUTER_SCIENCE_GRADE_THREE);
-                    storedCourseList = courseFromWebComputerScience.ToList<string[]>();//複製過去
-                    break;
-                case 1:
-                    if (courseFromWebEletronicScience == null)
-                        courseFromWebEletronicScience = _courseWebCrawlerModel.GetData(ELECTRONIC_SCIENCE_GRADE_THREE);
-                    storedCourseList = courseFromWebEletronicScience.ToList<string[]>();
-                    break;
-                default:
-                    if (courseFromWebComputerScience == null)
-                        courseFromWebComputerScience = _courseWebCrawlerModel.GetData(COMPUTER_SCIENCE_GRADE_THREE);
-                    storedCourseList = courseFromWebComputerScience.ToList<string[]>();//複製過去
-                    break;
-            }
-            CourseList = YourData.DeleteSameCourse(storedCourseList.ToList());
+            this.CourseList = _yourData.GetUnchooseCourse(mode).ToList();
         }
+
 
         private bool _sendButtonEnable = false;
         public bool SendButtonEnable

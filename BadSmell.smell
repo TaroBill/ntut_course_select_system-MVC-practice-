@@ -188,12 +188,12 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\CourseForm.cs on line 42.</SmellType>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\ClassTimePeriod.cs on line 16.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Hw1_選課系統</Project>
-              <File>CourseForm.cs</File>
-              <Line>42</Line>
+              <File>ClassTimePeriod.cs</File>
+              <Line>16</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -203,12 +203,13 @@
             </Smell>
             <Smell>
               <Id>2</Id>
-              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\CourseFormPresentationModel.cs on line 103.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.Course.ConvertPeriodStringToInteger.21string period;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>21</Weight>
               <Project>Hw1_選課系統</Project>
-              <File>CourseFormPresentationModel.cs</File>
-              <Line>103</Line>
+              <File>Course.cs</File>
+              <Line>191</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -218,12 +219,13 @@
             </Smell>
             <Smell>
               <Id>3</Id>
-              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\CourseSelectionResultForm1.cs on line 35.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.Course.ConvertPeriodIntegerToString.22int period;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>22</Weight>
               <Project>Hw1_選課系統</Project>
-              <File>CourseSelectionResultForm1.cs</File>
-              <Line>35</Line>
+              <File>Course.cs</File>
+              <Line>214</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -233,13 +235,12 @@
             </Smell>
             <Smell>
               <Id>4</Id>
-              <SmellType>Long method(過長函式)</SmellType>
-              <HashCode>LongMethod.CourseWebCrawlerModel.ConflictCourses.28List&lt;Course&gt; temporaryList;List&lt;Course&gt; yourCourseList;int mode;</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>28</Weight>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Course2.cs on line 87.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
               <Project>Hw1_選課系統</Project>
-              <File>CourseWebCrawlerModel.cs</File>
-              <Line>75</Line>
+              <File>Course2.cs</File>
+              <Line>87</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -249,12 +250,13 @@
             </Smell>
             <Smell>
               <Id>5</Id>
-              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Data.cs on line 26.</SmellType>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.CourseWebCrawlerModel.ConflictCourses.25List&lt;Course&gt; temporaryList;List&lt;Course&gt; yourCourseList;int mode;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>25</Weight>
               <Project>Hw1_選課系統</Project>
-              <File>Data.cs</File>
-              <Line>26</Line>
+              <File>CourseWebCrawlerModel.cs</File>
+              <Line>43</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -264,7 +266,52 @@
             </Smell>
             <Smell>
               <Id>6</Id>
-              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\StartUpFormPresentationModel.cs on line 53.</SmellType>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Model\Data.cs on line 134.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Hw1_選課系統</Project>
+              <File>Data.cs</File>
+              <Line>134</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\CourseFormPresentationModel.cs on line 101.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Hw1_選課系統</Project>
+              <File>CourseFormPresentationModel.cs</File>
+              <Line>101</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\CourseManageFormPresentationModel.cs on line 110.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Hw1_選課系統</Project>
+              <File>CourseManageFormPresentationModel.cs</File>
+              <Line>110</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\StartUpFormPresentationModel.cs on line 53.</SmellType>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>Hw1_選課系統</Project>
@@ -277,66 +324,103 @@
               <Comment />
               <Auto>false</Auto>
             </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseForm.cs on line 44.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Hw1_選課系統</Project>
+              <File>CourseForm.cs</File>
+              <Line>44</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseManageForm.cs on line 153.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Hw1_選課系統</Project>
+              <File>CourseManageForm.cs</File>
+              <Line>153</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseSelectionResultForm1.cs on line 35.</SmellType>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>Hw1_選課系統</Project>
+              <File>CourseSelectionResultForm1.cs</File>
+              <Line>35</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
           </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList>
             <string xsi:nil="true" />
-            <string>LongMethod.CourseWebCrawlerModel.ConflictCourses.28List&lt;Course&gt; temporaryList;List&lt;Course&gt; yourCourseList;int mode;</string>
+            <string>LongMethod.Course.ConvertPeriodStringToInteger.21string period;</string>
+            <string>LongMethod.Course.ConvertPeriodIntegerToString.22int period;</string>
+            <string>LongMethod.CourseWebCrawlerModel.ConflictCourses.25List&lt;Course&gt; temporaryList;List&lt;Course&gt; yourCourseList;int mode;</string>
           </HashCodeRequestIgnoreList>
           <AnalysisFileManager>
             <AnalysisFiles>
+              <AnalysisFile>
+                <RelativePath>ClassTimePeriod.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Course.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>CourseForm.cs</RelativePath>
-                <ProjectName>Hw1_選課系統</ProjectName>
-                <AnalysisFileType>ViewOrController</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseForm.Designer.cs</RelativePath>
-                <ProjectName>Hw1_選課系統</ProjectName>
-                <AnalysisFileType>Designer</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseFormPresentationModel.cs</RelativePath>
+                <RelativePath>Course2.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>CourseManagementForm.cs</RelativePath>
-                <ProjectName>Hw1_選課系統</ProjectName>
-                <AnalysisFileType>ViewOrController</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseManagementForm.Designer.cs</RelativePath>
-                <ProjectName>Hw1_選課系統</ProjectName>
-                <AnalysisFileType>Designer</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectionResultForm1.cs</RelativePath>
+                <RelativePath>Model\CourseWebCrawlerModel.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>CourseSelectionResultForm1.Designer.cs</RelativePath>
-                <ProjectName>Hw1_選課系統</ProjectName>
-                <AnalysisFileType>Designer</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectionResultPresentationModel.cs</RelativePath>
+                <RelativePath>Model\Data.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>CourseWebCrawlerModel.cs</RelativePath>
+                <RelativePath>PresentationModel\CourseFormPresentationModel.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>Data.cs</RelativePath>
+                <RelativePath>PresentationModel\CourseManageFormPresentationModel.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\CourseSelectionResultPresentationModel.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\StartUpFormPresentationModel.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -361,23 +445,48 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>StartUpForm.cs</RelativePath>
+                <RelativePath>View\CourseForm.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>StartUpForm.Designer.cs</RelativePath>
+                <RelativePath>View\CourseForm.Designer.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>StartUpFormPresentationModel.cs</RelativePath>
+                <RelativePath>View\CourseManageForm.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\CourseManageForm.Designer.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\CourseSelectionResultForm1.cs</RelativePath>
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\CourseSelectionResultForm1.Designer.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\StartUpForm.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\StartUpForm.Designer.cs</RelativePath>
+                <ProjectName>Hw1_選課系統</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>1772</ProductionLoc>
+          <ProductionLoc>2102</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

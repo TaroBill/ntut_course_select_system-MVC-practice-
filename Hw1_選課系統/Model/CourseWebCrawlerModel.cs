@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,43 +13,6 @@ namespace Homework_選課系統
         public CourseWebCrawlerModel() 
         { 
 
-        }
-        //從四資三網站爬蟲課程資料
-        public List<string[]> GetData(string path)
-        {
-            HtmlWeb webClient = new HtmlWeb() 
-            { 
-                OverrideEncoding = Encoding.Default };
-            HtmlDocument document = webClient.Load(path);
-            const string TABLE_FINDER = "//body/table";
-            HtmlNode nodeTable = document.DocumentNode.SelectSingleNode(TABLE_FINDER);//找到table
-            HtmlNodeCollection nodeTableRow = nodeTable.ChildNodes;
-            const int TIMES_TO_REMOVE = 3;
-            for (int removeIndex = 0; removeIndex < TIMES_TO_REMOVE; removeIndex++)
-            {
-                nodeTableRow.RemoveAt(0); //移除table的前三項row
-            }
-            nodeTableRow.RemoveAt(nodeTableRow.Count() - 1);//移除table最後一項的row
-            return AddToList(nodeTableRow);
-        }
-
-        //將table剩餘內容加到Course的List裡面
-        private List<string[]> AddToList(HtmlNodeCollection nodeTableRow) 
-        {
-            List<Course> courseList = new List<Course>();
-            //把剩餘table的內容用loop讀出
-            foreach (var node in nodeTableRow)
-            {
-                HtmlNodeCollection nodeTableDatas = node.ChildNodes;
-                nodeTableDatas.RemoveAt(0);// 移除 #text
-                courseList.Add(new Course(nodeTableDatas));
-            }
-            List<string[]> courseStringList = new List<string[]>();
-            foreach (Course course in courseList)
-            {
-                courseStringList.Add(course.ConvertToStringList());
-            }
-            return courseStringList;
         }
 
         //判定兩個List裡的課程有沒有衝堂，有的話把衝堂的課程加到List並回傳
@@ -71,12 +35,13 @@ namespace Homework_選課系統
             return result;
         }
 
+        const string COURSE_CONFLICT = "衝堂: ";
+        const string COURSE_NAME_REPEAT = "同名: ";
+        const string CHANGE_LINE = "\n";
+
         //回傳所有衝堂的課程名稱，若沒有則回傳空字串;
         public string ConflictCourses(List<Course> temporaryList, List<Course> yourCourseList, int mode)
         {
-            const string COURSE_CONFLICT = "衝堂: ";
-            const string COURSE_NAME_REPEAT = "同名: ";
-            const string CHANGE_LINE = "\n";
             string conflictType;
             Func<Course, Course, bool> conflict;
             if (mode == 0)
@@ -91,7 +56,7 @@ namespace Homework_選課系統
             }
             else
                 return "";
-            List<Course> result = CheckCourseDuplicate(temporaryList, temporaryList, conflict).Union(CheckCourseDuplicate(temporaryList, yourCourseList, conflict)).ToList<Course>();
+            List<Course> result = CheckCourseDuplicate(temporaryList, temporaryList, conflict).Union(CheckCourseDuplicate(temporaryList, yourCourseList.ToList<Course>(), conflict)).ToList<Course>();
             if (result.Count() != 0)
             {
                 foreach (Course course in result)

@@ -1,53 +1,18 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Homework_選課系統
 {
-    public class Course
+    public partial class Course : INotifyPropertyChanged
     {
-        private enum Index : int
-        {
-            Number,
-            Name,
-            Stage,
-            Credit,
-            Hour,
-            ClassType,
-            Teacher,
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday,
-            Classroom,
-            NumberOfStudent,
-            NumberOfDropStudent,
-            TeacherAssistance,
-            Language,
-            Syllabus,
-            Note,
-            Audit,
-            Experiment
-        }
-        private const int INDEX_SUNDAY = 0;
-        private const int INDEX_MONDAY = 1;
-        private const int INDEX_TUESDAY = 2;
-        private const int INDEX_WEDNESDAY = 3;
-        private const int INDEX_THURSDAY = 4;
-        private const int INDEX_FRIDAY = 5;
-        private const int INDEX_SATURDAY = 6;
-
-        public Course(string number, string name, string stage, string credit, string hour,
-            string classType, string teacher, string classTimeSunday, string classTimeMonday, string classTimeTuesday,
-            string classTimeWednesday, string classTimeThursday, string classTimeFriday, string classTimeSaturday, string classroom,
-            string numberOfStudent, string numberOfDropStudent, string assistance, string language,
-            string note, string syllabus, string audit, string experiment)
+        public Course(string number, string name, string stage, string credit, 
+            string teacher, string classType, string assistance, string language,
+            string note, string hour, string className)
         {
             this.Number = number;
             this.Name = name;
@@ -56,22 +21,19 @@ namespace Homework_選課系統
             this.Hour = hour;
             this.ClassType = classType;
             this.Teacher = teacher;
-            this.ClassTimeSunday = classTimeSunday;
-            this.ClassTimeMonday = classTimeMonday;
-            this.ClassTimeTuesday = classTimeTuesday;
-            this.ClassTimeWednesday = classTimeWednesday;
-            this.ClassTimeThursday = classTimeThursday;
-            this.ClassTimeFriday = classTimeFriday;
-            this.ClassTimeSaturday = classTimeSaturday;
-            this.Classroom = classroom;
-            this.NumberOfStudent = numberOfStudent;
-            this.NumberOfDropStudent = numberOfDropStudent;
+            this.ClassTime = new List<string>();
+            for (int index = 0; index < WEEK; index++)
+                ClassTime.Add("");
+            this.Classroom = "";
+            this.NumberOfStudent = "";
+            this.NumberOfDropStudent = "";
             this.Assistance = assistance;
             this.Language = language;
-            this.Syllabus = syllabus;
+            this.Syllabus = "";
             this.Note = note;
-            this.Audit = audit;
-            this.Experiment = experiment;
+            this.Audit = "";
+            this.Experiment = "";
+            this.Class = className;
         }
 
         public Course(HtmlNodeCollection nodeTableDatas)
@@ -120,6 +82,7 @@ namespace Homework_選課系統
             this.Note = listCourse[(int)Index.Note + 1];
             this.Audit = listCourse[(int)Index.Audit + 1];
             this.Experiment = listCourse[(int)Index.Experiment + 1];
+            this.Class = listCourse[(int)Index.Class + 1];
         }
 
         //將Course的所有內容轉為string
@@ -128,7 +91,7 @@ namespace Homework_選課系統
             const string NEGATIVE = "False";
             string[] row = 
                 { 
-                    NEGATIVE, this.Number, this.Name, this.Stage, this.Credit, this.Hour, this.ClassType, this.Teacher, this.ClassTime[INDEX_SUNDAY], this.ClassTime[INDEX_MONDAY], this.ClassTime[INDEX_TUESDAY], this.ClassTime[INDEX_WEDNESDAY], this.ClassTime[INDEX_THURSDAY], this.ClassTime[INDEX_FRIDAY], this.ClassTime[INDEX_SATURDAY], this.Classroom, this.NumberOfStudent,this.NumberOfDropStudent, this.Assistance, this.Language, this.Note, this.Syllabus, this.Audit, this.Experiment };
+                    NEGATIVE, _number, _name, _stage, _credit, _hour, _classType, _teacher, ClassTimeSunday, ClassTimeMonday, ClassTimeTuesday, ClassTimeWednesday, ClassTimeThursday, ClassTimeFriday, ClassTimeSaturday, _classroom, _numberOfStudent, _numberOfDropStudent, _assistance, _language, _note, _syllabus, _audit, _experiment, _class };
             return row;
         }
 
@@ -137,10 +100,10 @@ namespace Homework_選課系統
         {
             for (int classTimeIndex = 0; classTimeIndex < this.ClassTime.Count(); classTimeIndex++)
             {
-                if (this.ClassTime[classTimeIndex] == "" || course.ClassTime[classTimeIndex] == "")
+                if (ClassTime[classTimeIndex] == "" || course.ClassTime[classTimeIndex] == "")
                     continue;
                 const char NONE = ' ';
-                string[] thisCourse = this.ClassTime[classTimeIndex].Split(NONE);
+                string[] thisCourse = ClassTime[classTimeIndex].Split(NONE);
                 string[] thatCourse = course.ClassTime[classTimeIndex].Split(NONE);
                 var intersectedList = thisCourse.Intersect(thatCourse);
                 if (intersectedList.Count() != 0)
@@ -164,179 +127,132 @@ namespace Homework_選課系統
             return LEFT_QUOTES + this.Number + MINUS + this.Name + RIGHT_QUOTES;
         }
 
+        //分割ClassTime
+        public string[] SplitClassTime(int index)
+        {
+            const char NONE = ' ';
+            return ClassTime[index].Split(NONE);
+        }
+
+        const int PERIODS = 14;
+
+        //將此Course輸出到輸入的ClassTimePeriod
+        public void ClassTimePeriods(BindingList<ClassTimePeriod> periods)
+        {
+            for (int periodIndex = 0; periodIndex < PERIODS; periodIndex++)
+                periods[periodIndex].ResetAllPeriod();
+            for (int classTimeIndex = 0; classTimeIndex < this.ClassTime.Count(); classTimeIndex++)
+            {
+                string[] activeTime = this.SplitClassTime(classTimeIndex);
+                if (activeTime.Count() > 0 && activeTime[0] != "")
+                {
+                    foreach (string time in activeTime)
+                        periods[ConvertPeriodStringToInteger(time)].ClassTime[classTimeIndex] = true;
+                }
+            }
+        }
+
         //依照課號判定是否為同堂課
         public bool IsSameClass(string courseNumber)
         {
             return (this.Number == courseNumber);
         }
 
-        public string Number
+        //依照必填項目東西判定是否為同堂課
+        public bool IsSameClass(Course course)
         {
-            get; set;
+            return (this.Number == course.Number) && (this.Name == course.Name) && (this.Class == course.Class) && (this.Teacher == course.Teacher);
         }
 
-        public string Name
+        //確認課程必填項目有沒有填
+        public bool IsAllNecessary()
         {
-            get; set;
+            return (Number != "") && (Name != "") && (Stage != "") && (Credit != "") && (Teacher != "") && (ClassType != "") && (Hour != "") && (Class != "");
         }
 
-        public string Stage
+        //將另一堂課的必填內容複製到此
+        public void CopyNecessaryData(Course course)
         {
-            get; set;
+            Number = course.Number;
+            Name = course.Name;
+            Stage = course.Stage;
+            Credit = course.Credit;
+            Teacher = course.Teacher;
+            ClassType = course.ClassType;
+            Assistance = course.Assistance;
+            Language = course.Language;
+            Note = course.Note;
+            Hour = course.Hour;
+            Class = course.Class;
+            ClassTime = course.ClassTime;
         }
 
-        public string Credit
+        //將string轉換成int
+        public static int ConvertPeriodStringToInteger(string period)
         {
-            get; set;
-        }
-
-        public string Hour
-        {
-            get; set;
-        }
-
-        public string Teacher
-        {
-            get; set;
-        }
-
-        public List<string> ClassTime
-        {
-            get; set;
-        }
-
-        public string ClassTimeSunday
-        {
-            get
+            switch (period)
             {
-                return ClassTime.ElementAt(INDEX_SUNDAY);
-            }
-            set
-            {
-                ClassTime[INDEX_SUNDAY] = value;
-            }
-        }
-
-        public string ClassTimeMonday
-        {
-            get
-            {
-                return ClassTime.ElementAt(INDEX_MONDAY);
-            }
-            set
-            {
-                ClassTime[INDEX_MONDAY] = value;
+                case NOON:
+                    return NOON_INTEGER;
+                case TEN:
+                    return TEN_INTEGER;
+                case ELEVEN:
+                    return ELEVEN_INTEGER;
+                case TWELVE:
+                    return TWELVE_INTEGER;
+                case THIRTEEN:
+                    return THIRTEEN_INTEGER;
+                default:
+                    Int32.TryParse(period, out int output);
+                    if (output <= NOON_INTEGER)
+                        return output - 1;
+                    return output;
             }
         }
 
-        public string ClassTimeTuesday
+        //將int轉換成string
+        public static string ConvertPeriodIntegerToString(int period)
         {
-            get
+            if (period < NOON_INTEGER && period >= ONE_INTEGER)
+                return (period + 1).ToString();
+            else if (period < TEN_INTEGER && period > NOON_INTEGER)
+                return period.ToString();
+            switch (period)
             {
-                return ClassTime.ElementAt(INDEX_TUESDAY);
-            }
-            set
-            {
-                ClassTime[INDEX_TUESDAY] = value;
-            }
-        }
-
-        public string ClassTimeWednesday
-        {
-            get
-            {
-                return ClassTime.ElementAt(INDEX_WEDNESDAY);
-            }
-            set
-            {
-                ClassTime[INDEX_WEDNESDAY] = value;
-            }
-        }
-
-        public string ClassTimeThursday
-        {
-            get
-            {
-                return ClassTime.ElementAt(INDEX_THURSDAY);
-            }
-            set
-            {
-                ClassTime[INDEX_THURSDAY] = value;
+                case NOON_INTEGER:
+                    return NOON;
+                case TEN_INTEGER:
+                    return TEN;
+                case ELEVEN_INTEGER:
+                    return ELEVEN;
+                case TWELVE_INTEGER:
+                    return TWELVE;
+                case THIRTEEN_INTEGER:
+                    return THIRTEEN;
+                default:
+                    return "";
             }
         }
 
-        public string ClassTimeFriday
+        //將datagridview的classTime轉換成Course所儲存的方式
+        public void ConvertClassTimeStyle(List<ClassTimePeriod> periods)
         {
-            get
+            List<string> result = new List<string>();
+            for (int weekIndex = 0; weekIndex < WEEK; weekIndex++)
             {
-                return ClassTime.ElementAt(INDEX_FRIDAY);
+                result.Add("");
+                for (int periodIndex = 0; periodIndex < PERIODS; periodIndex++)
+                {
+                    if (periods[periodIndex].ClassTime[weekIndex])
+                    {
+                        if (result[weekIndex] == "")
+                            result[weekIndex] += ConvertPeriodIntegerToString(periodIndex);
+                        else
+                            result[weekIndex] += NONE + ConvertPeriodIntegerToString(periodIndex);
+                    }
+                }
             }
-            set
-            {
-                ClassTime[INDEX_FRIDAY] = value;
-            }
-        }
-
-        public string ClassTimeSaturday
-        {
-            get
-            {
-                return ClassTime.ElementAt(INDEX_SATURDAY);
-            }
-            set
-            {
-                ClassTime[INDEX_SATURDAY] = value;
-            }
-        }
-
-        public string Classroom
-        {
-            get; set;
-        }
-
-        public string NumberOfStudent
-        {
-            get; set;
-        }
-
-        public string Note
-        {
-            get; set;
-        }
-
-        public string NumberOfDropStudent
-        {
-            get; set;
-        }
-
-        public string Assistance
-        {
-            get; set;
-        }
-
-        public string Language
-        {
-            get; set;
-        }
-
-        public string Syllabus
-        {
-            get; set;
-        }
-
-        public string Audit
-        {
-            get; set;
-        }
-
-        public string Experiment
-        {
-            get; set;
-        }
-
-        public string ClassType
-        {
-            get; set;
+            this.ClassTime = result;
         }
     }
 }

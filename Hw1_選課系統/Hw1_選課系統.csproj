@@ -51,45 +51,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassTimePeriod.cs" />
     <Compile Include="Course.cs" />
-    <Compile Include="CourseForm.cs">
+    <Compile Include="Course2.cs" />
+    <Compile Include="PresentationModel\CourseManageFormPresentationModel.cs" />
+    <Compile Include="View\CourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CourseForm.Designer.cs">
+    <Compile Include="View\CourseForm.Designer.cs">
       <DependentUpon>CourseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseFormPresentationModel.cs" />
-    <Compile Include="CourseManagementForm.cs">
+    <Compile Include="PresentationModel\CourseFormPresentationModel.cs" />
+    <Compile Include="View\CourseSelectionResultForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CourseManagementForm.Designer.cs">
-      <DependentUpon>CourseManagementForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CourseSelectionResultForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CourseSelectionResultForm1.Designer.cs">
+    <Compile Include="View\CourseSelectionResultForm1.Designer.cs">
       <DependentUpon>CourseSelectionResultForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseSelectionResultPresentationModel.cs" />
-    <Compile Include="CourseWebCrawlerModel.cs" />
-    <Compile Include="Data.cs" />
+    <Compile Include="PresentationModel\CourseSelectionResultPresentationModel.cs" />
+    <Compile Include="Model\CourseWebCrawlerModel.cs" />
+    <Compile Include="Model\Data.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartUpForm.cs">
+    <Compile Include="View\StartUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartUpForm.Designer.cs">
+    <Compile Include="View\StartUpForm.Designer.cs">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StartUpFormPresentationModel.cs" />
-    <EmbeddedResource Include="CourseForm.resx">
+    <Compile Include="PresentationModel\StartUpFormPresentationModel.cs" />
+    <Compile Include="View\CourseManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CourseManageForm.Designer.cs">
+      <DependentUpon>CourseManageForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\CourseForm.resx">
       <DependentUpon>CourseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CourseManagementForm.resx">
-      <DependentUpon>CourseManagementForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CourseSelectionResultForm1.resx">
+    <EmbeddedResource Include="View\CourseSelectionResultForm1.resx">
       <DependentUpon>CourseSelectionResultForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -101,10 +101,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StartUpForm.resx">
+    <EmbeddedResource Include="View\StartUpForm.resx">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\CourseManageForm.resx">
+      <DependentUpon>CourseManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Homework_選課系統.ClassTimePeriod.datasource" />
     <None Include="Properties\DataSources\Homework_選課系統.Course.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

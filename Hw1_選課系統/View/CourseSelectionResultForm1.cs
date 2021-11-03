@@ -18,15 +18,15 @@ namespace Homework_選課系統
         {
             InitializeComponent();
             _yourData = inputData;
-            _yourData.YourCourseChangedEvent += UpdateDataGridView;
             _courseSelectionResultPresentationModel = new CourseSelectionResultPresentationModel(_yourData);
+            _yourData.CourseChanged += UpdateDataGridView;
             UpdateDataGridView();
         }
 
         //刷新dataGridView
         private void UpdateDataGridView()
         {
-            _courseResultGridView.DataSource = _courseSelectionResultPresentationModel.RefreshCourse();
+            _courseResultGridView.DataSource = _yourData.YourCourse;
         }
 
         //點擊退選按鈕
