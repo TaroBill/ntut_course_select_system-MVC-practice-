@@ -484,6 +484,16 @@
                 <ProjectName>Hw1_選課系統</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Model\DataTests.cs</RelativePath>
+                <ProjectName>Hw1_選課系統Tests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
+                <ProjectName>Hw1_選課系統Tests</ProjectName>
+                <AnalysisFileType>Unknown</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
           <ProductionLoc>2102</ProductionLoc>

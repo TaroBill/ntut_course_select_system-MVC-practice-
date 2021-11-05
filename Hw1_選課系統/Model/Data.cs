@@ -32,6 +32,10 @@ namespace Homework_選課系統
                     AddDataToAllCourse();
                 return _allCourse;
             }
+            set
+            {
+                _allCourse = value; //這裡外面不能取用，單純設給Unit test用
+            }
         }
 
         //重新爬蟲加入_allCourse
@@ -145,7 +149,7 @@ namespace Homework_選課系統
             }
         }
 
-        //加入Course到BindingList裡
+        //allCourse裡加入Course到yourCourse裡，若allCourse找不到則不加入
         public void AddCourse(Course course)
         {
             for (int allCourseIndex = 0; allCourseIndex < AllCourses.Count(); allCourseIndex++)
@@ -161,7 +165,7 @@ namespace Homework_選課系統
         //移除Course資料的第N行
         public void RemoveCourseAt(int index)
         {
-            if (_yourCourseInAllCourseIndex.Count() > 0)
+            if (index > 0 && index < _yourCourseInAllCourseIndex.Count())
                 _yourCourseInAllCourseIndex.RemoveAt(index);
         }
 
@@ -182,20 +186,6 @@ namespace Homework_選課系統
             return inputCourse;
         }
 
-        //根據模式取得該班級的課程(0:資工)(1:電子)
-        public List<string[]> GetCourse(int mode)
-        {
-            switch (mode)
-            {
-                case 0:
-                    return CourseListToStringList(CourseFromWebComputerScience.ToList<Course>());//複製過去
-                case 1:
-                    return CourseListToStringList(CourseFromWebEletronicScience.ToList<Course>());
-                default:
-                    return CourseListToStringList(CourseFromWebComputerScience.ToList<Course>());//複製過去
-            }
-        }
-
         //將List<Course>轉成List<string[]>
         private List<string[]> CourseListToStringList(List<Course> courseList)
         {
@@ -207,10 +197,23 @@ namespace Homework_選課系統
             return courseStringList;
         }
 
-        //取得被選擇以外的該班級所有課
+        //取得被選擇以外的該班級所有課 (0:資工)(1:電子)
         public List<string[]> GetUnchooseCourse(int mode)
         {
-            return DeleteSameCourse(GetCourse(mode));
+            List<string[]> result;
+            switch (mode)
+            {
+                case 0:
+                    result =  CourseListToStringList(CourseFromWebComputerScience.ToList<Course>());//複製過去
+                    break;
+                case 1:
+                    result =  CourseListToStringList(CourseFromWebEletronicScience.ToList<Course>());
+                    break;
+                default:
+                    result =  CourseListToStringList(CourseFromWebComputerScience.ToList<Course>());//複製過去
+                    break;
+            }
+            return DeleteSameCourse(result);
         }
     }
 }
