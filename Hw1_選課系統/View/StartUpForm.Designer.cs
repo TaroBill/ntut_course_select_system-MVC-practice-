@@ -43,7 +43,7 @@ namespace Homework_選課系統
             this._courseSelectButton.Name = "_courseSelectButton";
             this._courseSelectButton.Size = new System.Drawing.Size(807, 164);
             this._courseSelectButton.TabIndex = 0;
-            this._courseSelectButton.Text = "Course Seleting Systtem";
+            this._courseSelectButton.Text = "Course Seleting System";
             this._courseSelectButton.UseVisualStyleBackColor = true;
             this._courseSelectButton.Click += new System.EventHandler(this.ClickCourseSelect);
             // 

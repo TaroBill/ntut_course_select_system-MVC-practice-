@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework_選課系統
 {
-    class CourseSelectionResultPresentationModel
+    public class CourseSelectionResultPresentationModel
     {
         private readonly Data _yourData;
 

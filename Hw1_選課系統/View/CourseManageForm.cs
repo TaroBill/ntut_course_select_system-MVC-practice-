@@ -20,39 +20,35 @@ namespace Homework_選課系統
             InitializeComponent();
             _courseManageFormPresentationModel = new CourseManageFormPresentationModel(yourData);
             _yourData = yourData;
+            EventConnector();
             ChangeDataSourceUpdateMode(DataSourceUpdateMode.Never);
             BindTools();
-            EventConnector();
             InitDataGridView();
+            SetAddCourseMode();
+            UpdateClasses();
+            _courseManageFormPresentationModel.AddNewClassMode = 0;
+            _classNameTextBox.Enabled = false;
+            ClearClassText();
         }
 
-        //將textbox變動事件繫結到一個function
-        private void EventConnector()
+        //更新可選班級的combobox和所有班級的listbox
+        public void UpdateClasses()
         {
-            _courseManageFormPresentationModel.ButtonChangedEnable += UpdateButton;
-            _courseNumberTextBox.TextChanged += SendCourseToModel;
-            _courseNameTextBox.TextChanged += SendCourseToModel;
-            _courseStageTextBox.TextChanged += SendCourseToModel; 
-            _courseCreditTextBox.TextChanged += SendCourseToModel;
-            _courseTeacherTextBox.TextChanged += SendCourseToModel;
-            _courseClassTypeComboBox.TextChanged += SendCourseToModel;
-            _courseTeacherAssistanceTextBox.TextChanged += SendCourseToModel;
-            _courseLanguageTextBox.TextChanged += SendCourseToModel;
-            _courseNoteTextBox.TextChanged += SendCourseToModel;
-            _courseHourComboBox.TextChanged += SendCourseToModel;
-            _courseClassComboBox.TextChanged += SendCourseToModel;
-            _classTimeDataGridView.CellContentClick += SendCourseToModel;
-            _courseNumberTextBox.KeyPress +=  PressKeyInNumberOnlyTextBox;
-            _courseStageTextBox.KeyPress += PressKeyInNumberOnlyTextBox;
-            _courseCreditTextBox.KeyPress += PressKeyInNumberOnlyTextBox;
+            _courseClassComboBox.Items.Clear();
+            _courseClassComboBox.Items.AddRange(_yourData.AllClassesNameList);
+            _allClassesListBox.DataSource = _yourData.AllClassesNameList;
         }
 
         //送出所有資料更新
         public void SendCourseToModel(object sender = null, EventArgs e = null)
         {
-            _courseManageFormPresentationModel.TemporaryCourseData = new Course(_courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text,
+            Course storedCourse = new Course(_courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text,
                 _courseTeacherTextBox.Text, _courseClassTypeComboBox.Text, _courseTeacherAssistanceTextBox.Text, _courseLanguageTextBox.Text, _courseNoteTextBox.Text,
-                _courseHourComboBox.Text, _courseClassComboBox.Text);
+                _courseHourComboBox.Text, _courseClassComboBox.Text)
+            { 
+                IsOpened = _chooseOpenComboBox.Text
+            };
+            _courseManageFormPresentationModel.TemporaryCourseData = storedCourse;
             _courseManageFormPresentationModel.SaveButtonEnable = _courseManageFormPresentationModel.CheckCourseNeccessary();
         }
 
@@ -61,7 +57,9 @@ namespace Homework_選課系統
         {
             _saveButton.Enabled = _courseManageFormPresentationModel.SaveButtonEnable;
             _saveButton.Text = _courseManageFormPresentationModel.SaveButtonText;
-            _courseGroupBox.Text = _courseManageFormPresentationModel.GroupBoxText;
+            _courseGroupBox.Text = _courseManageFormPresentationModel.CourseGroupBoxText;
+            _classGroupBox.Text = _courseManageFormPresentationModel.ClassGroupBoxText;
+            _addButton.Enabled = _courseManageFormPresentationModel.AppendClassButtonEnable;
         }
 
         //初始化classTime的dataGridView
@@ -84,6 +82,7 @@ namespace Homework_選課系統
             _courseHourComboBox.DataBindings.Add(TEXT, _yourData.AllCourses, "Hour");
             _courseClassComboBox.DataBindings.Add(TEXT, _yourData.AllCourses, "Class");
             _courseClassTypeComboBox.DataBindings.Add(TEXT, _yourData.AllCourses, "ClassType");
+            _chooseOpenComboBox.DataBindings.Add(TEXT, _yourData.AllCourses, "IsOpened");
             _courseBindingSource.DataSource = _yourData.AllCourses;
         }
 
@@ -101,6 +100,7 @@ namespace Homework_選課系統
             _courseHourComboBox.DataBindings.DefaultDataSourceUpdateMode = mode;
             _courseClassComboBox.DataBindings.DefaultDataSourceUpdateMode = mode;
             _courseClassTypeComboBox.DataBindings.DefaultDataSourceUpdateMode = mode;
+            _chooseOpenComboBox.DataBindings.DefaultDataSourceUpdateMode = mode;
         }
 
         private BindingManagerBase BindingManager
@@ -112,7 +112,7 @@ namespace Homework_選課系統
         }
 
         //移除所有輸入方塊的text
-        private void ClearText()
+        private void ClearCourseText()
         {
             _chooseOpenComboBox.SelectedIndex = 0;
             _courseNumberTextBox.Text = "";
@@ -129,15 +129,65 @@ namespace Homework_選課系統
             SendCourseToModel();
         }
 
-        //當選擇其他課程時
-        private void SelectedIndexChangedCoursesListBox(object sender, EventArgs e)
+        //移除所有輸入方塊的text
+        private void ClearClassText()
         {
+            _classNameTextBox.Text = "";
+            _classCoursesListBox.DataSource = null;
+        }
+
+            //當選擇其他課程時
+            private void SelectedIndexChangedCoursesListBox(object sender, EventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            BindingManager.ResumeBinding();
             _courseBindingSource.ResumeBinding();
-            _courseManageFormPresentationModel.SaveButtonEnable = false;
             _courseManageFormPresentationModel.AddNewButtonMode = 0;
-            BindingManager.Position = _coursesListBox.SelectedIndex;
-            _courseManageFormPresentationModel.LoadCourseClassTimeToDataGridView(_coursesListBox.SelectedIndex);
+            BindingManager.Position = listBox.SelectedIndex;
+            _courseManageFormPresentationModel.LoadCourseClassTimeToDataGridView(listBox.SelectedIndex);
             _classTimeDataGridView.Refresh();
+            _courseManageFormPresentationModel.SaveButtonEnable = false;
+        }
+
+        //當選擇其他班級時
+        private void SelectedIndexChangedClassesListBox(object sender, EventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            string name = _yourData.AllClassesNameList[listBox.SelectedIndex];
+            _classNameTextBox.Text = name;
+            UpdateClassCourseListBox();
+            _courseManageFormPresentationModel.AddNewClassMode = 0;
+            _addButton.Enabled = false;
+            _addClassButton.Enabled = true;
+        }
+
+        //更新所選班級的課程
+        private void UpdateClassCourseListBox()
+        {
+            _classCoursesListBox.DataSource = _courseManageFormPresentationModel.GetClassCoursesList(_allClassesListBox.SelectedIndex);
+        }
+
+        //點擊儲存按鈕
+        private void ClickAddClassButton(object sender, EventArgs e)
+        {
+            _addClassButton.Enabled = false;
+            _classNameTextBox.Enabled = true;
+            ClearClassText();
+            _courseManageFormPresentationModel.AddNewClassMode = 1;
+        }
+
+        //當變更班級名稱時
+        private void ChangeClassNameTextBoxText(object sender, EventArgs e)
+        {
+            _courseManageFormPresentationModel.ClassNameTextBoxText = _classNameTextBox.Text;
+        }
+
+        //點擊新增班級按鈕
+        private void ClickAppendClassButton(object sender, EventArgs e)
+        {
+            _yourData.AddClass(_classNameTextBox.Text);
+            UpdateClasses();
+            _yourData.NotifyDone();
         }
 
         //點擊儲存按鈕
@@ -162,11 +212,36 @@ namespace Homework_選課系統
         //點擊新增課程
         private void ClickAddNewCourseButton(object sender, EventArgs e)
         {
+            SetAddCourseMode();
+        }
+
+        //設置成新增課程模式
+        private void SetAddCourseMode()
+        {
+            _coursesListBox.SelectedIndex = -1;
+            BindingManager.SuspendBinding();
             _courseBindingSource.SuspendBinding();
-            ClearText();
             _courseManageFormPresentationModel.ResetAllPeriods();
             _classTimeDataGridView.Refresh();
             _courseManageFormPresentationModel.AddNewButtonMode = 1;
+            ClearCourseText();
+        }
+
+
+        private ImportCourseProgressForm _importCourseProgressForm;
+        //按下加入所有資工課程按鈕
+        private void ClickAddAllComputerScienceButton(object sender, EventArgs e)
+        {
+            _importCourseProgressForm = new ImportCourseProgressForm(new ImportCourseProgressFormPresentationModel(_yourData));
+            _addAllComputerScienceButton.Enabled = false;
+            _importCourseProgressForm.ShowDialog();
+            _addAllComputerScienceButton.Enabled = true;
+        }
+
+        //當調整是否開課
+        private void IsOpenedComboBoxChanged(object sender, EventArgs e)
+        {
+            _yourData.NotifyCourseObserver();
         }
     }
 }

@@ -202,6 +202,45 @@
   <project key="-685803280">
     <configuration>DEBUG;TRACE</configuration>
   </project>
+  <sourcecode name="Course.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2021/10/04 09:58:22.071</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2021/11/28 15:42:34.508</sourceFile>
+      <parser>2021/10/04 09:58:22.071</parser>
+      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LongMethod" ruleCheckId="LM0001">
+        <context>Long method(過長函式)</context>
+        <line>195</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LongMethod" ruleCheckId="LM0001">
+        <context>Long method(過長函式)</context>
+        <line>218</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="Course2.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2021/10/04 09:58:22.071</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2021/11/29 22:23:41.224</sourceFile>
+      <parser>2021/10/04 09:58:22.071</parser>
+      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Course2.cs on line 89.</context>
+        <line>89</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="ClassTimePeriod.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
@@ -213,47 +252,8 @@
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\ClassTimePeriod.cs on line 16.</context>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Model\ClassTimePeriod.cs on line 16.</context>
         <line>16</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Course.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2021/10/04 09:58:22.071</styleCop>
-      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 19:06:36.000</sourceFile>
-      <parser>2021/10/04 09:58:22.071</parser>
-      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
-      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LongMethod" ruleCheckId="LM0001">
-        <context>Long method(過長函式)</context>
-        <line>191</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="LongMethod" ruleCheckId="LM0001">
-        <context>Long method(過長函式)</context>
-        <line>214</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Course2.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2021/10/04 09:58:22.071</styleCop>
-      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 18:52:01.301</sourceFile>
-      <parser>2021/10/04 09:58:22.071</parser>
-      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
-      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Course2.cs on line 87.</context>
-        <line>87</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -262,7 +262,7 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/10/31 16:15:01.346</sourceFile>
+      <sourceFile>2021/11/28 01:37:00.440</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -279,15 +279,15 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 19:22:05.616</sourceFile>
+      <sourceFile>2021/11/28 16:23:28.581</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Model\Data.cs on line 134.</context>
-        <line>134</line>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\Model\Data.cs on line 32.</context>
+        <line>32</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -296,15 +296,15 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 19:22:37.833</sourceFile>
+      <sourceFile>2021/11/28 01:29:31.648</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\CourseFormPresentationModel.cs on line 101.</context>
-        <line>101</line>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\CourseFormPresentationModel.cs on line 110.</context>
+        <line>110</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -313,15 +313,15 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 19:31:09.979</sourceFile>
+      <sourceFile>2021/11/29 22:23:18.551</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\CourseManageFormPresentationModel.cs on line 110.</context>
-        <line>110</line>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\CourseManageFormPresentationModel.cs on line 169.</context>
+        <line>169</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -330,26 +330,43 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 18:24:21.515</sourceFile>
+      <sourceFile>2021/11/14 09:23:46.351</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="StartUpFormPresentationModel.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="ImportCourseProgressFormPresentationModel.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/10/31 14:13:57.331</sourceFile>
+      <sourceFile>2021/11/27 17:19:43.036</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\StartUpFormPresentationModel.cs on line 53.</context>
-        <line>53</line>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\ImportCourseProgressFormPresentationModel.cs on line 20.</context>
+        <line>20</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="StartUpFormPresentationModel.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2021/10/04 09:58:22.071</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2021/11/13 23:12:44.126</sourceFile>
+      <parser>2021/10/04 09:58:22.071</parser>
+      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\PresentationModel\StartUpFormPresentationModel.cs on line 34.</context>
+        <line>34</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -402,15 +419,15 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/10/31 16:18:59.232</sourceFile>
+      <sourceFile>2021/11/27 17:25:52.694</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseForm.cs on line 44.</context>
-        <line>44</line>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseForm.cs on line 42.</context>
+        <line>42</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -419,7 +436,7 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/10/18 10:56:30.451</sourceFile>
+      <sourceFile>2021/11/28 00:49:28.635</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -430,15 +447,15 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 19:34:13.434</sourceFile>
+      <sourceFile>2021/11/28 15:52:19.925</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
     </timestamps>
     <violations>
       <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseManageForm.cs on line 153.</context>
-        <line>153</line>
+        <context>A syntax error has been discovered in file D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\View\CourseManageForm.cs on line 203.</context>
+        <line>203</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -447,7 +464,7 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/11/01 17:38:05.752</sourceFile>
+      <sourceFile>2021/11/28 15:52:19.930</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -482,11 +499,39 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <sourcecode name="ImportCourseProgressForm.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2021/10/04 09:58:22.071</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2021/11/27 17:19:51.262</sourceFile>
+      <parser>2021/10/04 09:58:22.071</parser>
+      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="KellyPalRules.KellyPalAnalyzer" rule="Method2" ruleCheckId="MT0002">
+        <context>ICS(函式-2)</context>
+        <line>47</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="ImportCourseProgressForm.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2021/10/04 09:58:22.071</styleCop>
+      <settingsFile>0001/01/01 00:00:00.000</settingsFile>
+      <sourceFile>2021/11/27 09:57:26.779</sourceFile>
+      <parser>2021/10/04 09:58:22.071</parser>
+      <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
+      <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
   <sourcecode name="StartUpForm.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/10/31 14:10:56.088</sourceFile>
+      <sourceFile>2021/11/27 18:24:06.170</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>
@@ -497,7 +542,7 @@
     <timestamps>
       <styleCop>2021/10/04 09:58:22.071</styleCop>
       <settingsFile>0001/01/01 00:00:00.000</settingsFile>
-      <sourceFile>2021/10/18 00:38:08.449</sourceFile>
+      <sourceFile>2021/11/27 18:24:06.175</sourceFile>
       <parser>2021/10/04 09:58:22.071</parser>
       <KellyPalRules.KellyPalAnalyzer>2021/10/04 09:58:22.071</KellyPalRules.KellyPalAnalyzer>
       <KellyPalRules.KellyPalAnalyzer.FilesHashCode>0</KellyPalRules.KellyPalAnalyzer.FilesHashCode>

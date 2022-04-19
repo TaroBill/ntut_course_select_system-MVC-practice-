@@ -18,10 +18,12 @@ namespace Homework_選課系統
 
         private readonly Data _yourData;
         const int PERIODS = 14;
-        const string SAVE = "儲存";
+        const string SAVE = "儲存"; 
         const string ADD = "新增";
         const string EDIT = "編輯課程";
         const string APPEND = "新增課程";
+        const string EDIT_CLASS = "班級";
+        const string APPEND_CLASS = "新增班級";
 
         public CourseManageFormPresentationModel(Data yourData)
         {
@@ -31,7 +33,7 @@ namespace Homework_選課系統
             {
                 _classTime.Add(new ClassTimePeriod(Course.ConvertPeriodIntegerToString(periodIndex)));
             }
-            AddNewButtonMode = 0;
+            AddNewButtonMode = 1;
         }
 
         private readonly BindingList<ClassTimePeriod> _classTime;
@@ -75,7 +77,12 @@ namespace Homework_選課系統
             get; set;
         }
 
-        public string GroupBoxText
+        public string CourseGroupBoxText
+        {
+            get; set;
+        }
+
+        public string ClassGroupBoxText
         {
             get; set;
         }
@@ -93,14 +100,66 @@ namespace Homework_選課系統
                 if (_addNewButtonMode == 0)
                 {
                     SaveButtonText = SAVE;
-                    GroupBoxText = EDIT;
+                    CourseGroupBoxText = EDIT;
                 }
                 else
                 {
                     SaveButtonText = ADD;
-                    GroupBoxText = APPEND;
+                    CourseGroupBoxText = APPEND;
                 }
                 NotifyButtonObserver();
+            }
+        }
+
+        private int _addNewClassMode;
+        public int AddNewClassMode
+        {
+            get
+            {
+                return _addNewClassMode;
+            }
+            set
+            {
+                _addNewClassMode = value;
+                if (_addNewClassMode == 0)
+                {
+                    ClassGroupBoxText = EDIT_CLASS;
+                    AppendClassButtonEnable = false;
+                }
+                else
+                    ClassGroupBoxText = APPEND_CLASS;
+                NotifyButtonObserver();
+            }
+        }
+
+        private bool _appendClassButtonEnable;
+        public bool AppendClassButtonEnable
+        {
+            get
+            {
+                return _appendClassButtonEnable;
+            }
+            set
+            {
+                _appendClassButtonEnable = value;
+                NotifyButtonObserver();
+            }
+        }
+
+        private string _classNameTextBoxText;
+        public string ClassNameTextBoxText
+        {
+            get
+            {
+                return _classNameTextBoxText;
+            }
+            set
+            {
+                _classNameTextBoxText = value;
+                if (_classNameTextBoxText != "" && AddNewClassMode == 1)
+                    AppendClassButtonEnable = true;
+                else
+                    AppendClassButtonEnable = false;
             }
         }
 
@@ -126,7 +185,7 @@ namespace Homework_選課系統
                 return;
             Course course = _yourData.AllCourses[(int)selectCourseIndex];
             ResetAllPeriods();
-             course.ClassTimePeriods(this._classTime);
+            course.ClassTimePeriods(this._classTime);
         }
 
         //將classTime裡所有節都設為false
@@ -142,7 +201,7 @@ namespace Homework_選課系統
             bool successConvert = Int32.TryParse(TemporaryCourseData.Hour, out int hour);
             if (!successConvert)
                 return false;
-            if (hour <= CalulateTotalClassTime())
+            if (hour == CalulateTotalClassTime())
             {
                 return TemporaryCourseData.IsAllNecessary();
             }
@@ -169,6 +228,14 @@ namespace Homework_選課系統
             else if (AddNewButtonMode == 1)
                 _yourData.AllCourses.Add(TemporaryCourseData);
             _yourData.NotifyCourseObserver();
+        }
+
+        //確認變更修改到YourData
+        public List<string> GetClassCoursesList(int classIndex)
+        {
+            if (classIndex < 0)
+                return null;
+            return _yourData.GetCoursesNameByClassName(_yourData.AllClassesNameList[classIndex]);
         }
 
         //textBox只允許輸入數字

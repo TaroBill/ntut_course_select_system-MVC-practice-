@@ -15,3 +15,4 @@ D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\obj\Debug
 D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\obj\Debug\Homework_選課系統.StartUpForm.resources
 D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\obj\Debug\Homework_選課系統.CourseSelectionResultForm1.resources
 D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\obj\Debug\Homework_選課系統.CourseManageForm.resources
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統\obj\Debug\Homework_選課系統.ImportCourseProgressForm.resources

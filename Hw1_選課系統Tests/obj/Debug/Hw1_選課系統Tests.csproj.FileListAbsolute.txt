@@ -21,3 +21,15 @@ D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\obj\
 D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\obj\Debug\Hw1_選課系統Tests.csproj.CopyComplete
 D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\obj\Debug\Hw1_選課系統Tests.dll
 D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\obj\Debug\Hw1_選課系統Tests.pdb
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Appium.Net.dll
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Castle.Core.dll
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Newtonsoft.Json.dll
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\SeleniumExtras.PageObjects.dll
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\WebDriver.dll
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\WebDriver.Support.dll
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Appium.Net.xml
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Castle.Core.xml
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Newtonsoft.Json.pdb
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\Newtonsoft.Json.xml
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\WebDriver.xml
+D:\school\視窗程式設計(C# .Net\Hw1_選課系統\Hw1_選課系統Tests\bin\Debug\WebDriver.Support.xml

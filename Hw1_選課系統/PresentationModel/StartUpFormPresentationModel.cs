@@ -20,30 +20,11 @@ namespace Homework_選課系統
             _yourData = new Data();
         }
 
-        private CourseForm _courseForm;
-        public CourseForm CourseSelectForm
+        public Data YourData
         {
             get
             {
-                return _courseForm;
-            }
-            set
-            {
-                _courseForm = value;
-                CourseSelectButtonEnable = !CourseSelectButtonEnable;
-            }
-        }
-        private CourseManageForm _courseManagementForm;
-        public CourseManageForm CourseManageForm
-        {
-            get
-            {
-                return _courseManagementForm;
-            }
-            set
-            {
-                _courseManagementForm = value;
-                CourseManageButtonEnable = !CourseManageButtonEnable;
+                return _yourData;
             }
         }
 
@@ -81,34 +62,5 @@ namespace Homework_選課系統
             }
         }
 
-        //顯示選課系統
-        public void ShowCourseSelectForm()
-        {
-            CourseWebCrawlerModel courseWebCrawlerModel = new CourseWebCrawlerModel();
-            CourseFormPresentationModel courseFormPresentationModel = new CourseFormPresentationModel(courseWebCrawlerModel, _yourData);
-            CourseSelectForm = new CourseForm(courseFormPresentationModel, _yourData);
-            CourseSelectForm.FormClosed += SelectFormClosed;
-            CourseSelectForm.Show();
-        }
-
-        //判定SelectForm是否關閉
-        private void SelectFormClosed(object sender, EventArgs e)
-        {
-            CourseSelectForm = null;
-        }
-
-        //判定ManageForm是否關閉
-        private void ManageFormClosed(object sender, EventArgs e)
-        {
-            CourseManageForm = null;
-        }
-
-        //顯示課程管理系統
-        public void ShowCourseManageForm()
-        {
-            CourseManageForm = new CourseManageForm(_yourData);
-            CourseManageForm.FormClosed += ManageFormClosed;
-            CourseManageForm.Show();
-        }
     }
 }

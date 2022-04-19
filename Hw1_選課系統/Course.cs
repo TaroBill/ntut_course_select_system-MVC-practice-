@@ -34,6 +34,7 @@ namespace Homework_選課系統
             this.Audit = "";
             this.Experiment = "";
             this.Class = className;
+            this.IsOpened = OPENED;
         }
 
         public Course(HtmlNodeCollection nodeTableDatas)
@@ -58,6 +59,7 @@ namespace Homework_選課系統
             this.Note = nodeTableDatas.ElementAt((int)Index.Note).InnerText.Trim();
             this.Audit = nodeTableDatas.ElementAt((int)Index.Audit).InnerText.Trim();
             this.Experiment = nodeTableDatas.ElementAt((int)Index.Experiment).InnerText.Trim();
+            this.IsOpened = OPENED;
         }
 
         public Course(string[] listCourse)
@@ -83,6 +85,7 @@ namespace Homework_選課系統
             this.Audit = listCourse[(int)Index.Audit + 1];
             this.Experiment = listCourse[(int)Index.Experiment + 1];
             this.Class = listCourse[(int)Index.Class + 1];
+            IsOpened = listCourse[(int)Index.Class + 1]; 
         }
 
         //將Course的所有內容轉為string
@@ -91,11 +94,11 @@ namespace Homework_選課系統
             const string NEGATIVE = "False";
             string[] row = 
                 { 
-                    NEGATIVE, _number, _name, _stage, _credit, _hour, _classType, _teacher, ClassTimeSunday, ClassTimeMonday, ClassTimeTuesday, ClassTimeWednesday, ClassTimeThursday, ClassTimeFriday, ClassTimeSaturday, _classroom, _numberOfStudent, _numberOfDropStudent, _assistance, _language, _note, _syllabus, _audit, _experiment, _class };
+                    NEGATIVE, _number, _name, _stage, _credit, _hour, _classType, _teacher, ClassTimeSunday, ClassTimeMonday, ClassTimeTuesday, ClassTimeWednesday, ClassTimeThursday, ClassTimeFriday, ClassTimeSaturday, _classroom, _numberOfStudent, _numberOfDropStudent, _assistance, _language, _syllabus, _note, _audit, _experiment, _class, IsOpened };
             return row;
         }
 
-        //判定此堂課與輸入的課有沒有衝突
+        //判定此堂課與輸入的課有沒有衝堂
         public bool IsClassConflict(Course course)
         {
             for (int classTimeIndex = 0; classTimeIndex < this.ClassTime.Count(); classTimeIndex++)
@@ -106,7 +109,7 @@ namespace Homework_選課系統
                 string[] thisCourse = ClassTime[classTimeIndex].Split(NONE);
                 string[] thatCourse = course.ClassTime[classTimeIndex].Split(NONE);
                 var intersectedList = thisCourse.Intersect(thatCourse);
-                if (intersectedList.Count() != 0)
+                if (intersectedList.Count() > 0)
                     return true;
             }
             return false;
@@ -139,12 +142,12 @@ namespace Homework_選課系統
         //將此Course輸出到輸入的ClassTimePeriod
         public void ClassTimePeriods(BindingList<ClassTimePeriod> periods)
         {
-            for (int periodIndex = 0; periodIndex < PERIODS; periodIndex++)
+            for (int periodIndex = 0; periodIndex < periods.Count(); periodIndex++)
                 periods[periodIndex].ResetAllPeriod();
             for (int classTimeIndex = 0; classTimeIndex < this.ClassTime.Count(); classTimeIndex++)
             {
                 string[] activeTime = this.SplitClassTime(classTimeIndex);
-                if (activeTime.Count() > 0 && activeTime[0] != "")
+                if (activeTime[0] != "")
                 {
                     foreach (string time in activeTime)
                         periods[ConvertPeriodStringToInteger(time)].ClassTime[classTimeIndex] = true;
@@ -185,6 +188,7 @@ namespace Homework_選課系統
             Hour = course.Hour;
             Class = course.Class;
             ClassTime = course.ClassTime;
+            IsOpened = course.IsOpened;
         }
 
         //將string轉換成int
@@ -231,6 +235,25 @@ namespace Homework_選課系統
                     return THIRTEEN;
                 default:
                     return "";
+            }
+        }
+
+        //將list裡的元素加入bindinglist
+        public static void AddListToBindingList(BindingList<Course> bindingListCourse, List<Course> listCourse)
+        {
+            foreach (Course course in listCourse)
+            {
+                bool isDuplicate = false;
+                foreach (Course bindingCourse in bindingListCourse)
+                {
+                    if (course.IsSameClass(bindingCourse.Number))
+                    {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if (!isDuplicate)
+                    bindingListCourse.Add(course);
             }
         }
 

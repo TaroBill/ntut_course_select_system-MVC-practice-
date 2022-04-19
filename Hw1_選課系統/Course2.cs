@@ -11,7 +11,7 @@ namespace Homework_選課系統
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private enum Index : int
+        public enum Index : int
         {
             Number,
             Name,
@@ -36,7 +36,8 @@ namespace Homework_選課系統
             Note,
             Audit,
             Experiment,
-            Class
+            Class,
+            IsOpened
         }
 
         private const int INDEX_SUNDAY = 0;
@@ -66,6 +67,7 @@ namespace Homework_選課系統
         private string _experiment;
         private string _classType;
         private string _class;
+        private bool _isOpened;
 
         const string NOON = "N";
         const string TEN = "A";
@@ -409,6 +411,21 @@ namespace Homework_選課系統
             {
                 this._class = value;
                 NotifyPropertyChanged("Class");
+            }
+        }
+
+        private const string OPENED = "開課";
+        private const string UNOPENED = "未開課";
+        public string IsOpened
+        {
+            get
+            {
+                return _isOpened ? OPENED : UNOPENED;
+            }
+            set
+            {
+                this._isOpened = value == OPENED;
+                NotifyPropertyChanged("IsOpened");
             }
         }
     }

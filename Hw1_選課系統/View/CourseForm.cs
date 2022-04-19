@@ -16,12 +16,16 @@ namespace Homework_選課系統
         private readonly Data _yourData;
         public CourseForm(CourseFormPresentationModel inputCourseFormPresentationModel, Data yourdata)
         {
-            InitializeComponent();
             _yourData = yourdata;
+            InitializeComponent();
             _courseFormPresentationModel = inputCourseFormPresentationModel;
             _courseFormPresentationModel.ButtonChangedEnable += UpdateButton;
             _courseFormPresentationModel.CourseChanged += UpdateCourse;
+            _tabControl1.SelectedIndex = 0;
+            _courseFormPresentationModel.CurrentTabPage = _tabControl1.SelectedIndex;
             _courseFormPresentationModel.AddCourse(_tabControl1.SelectedIndex);
+            _courseFormPresentationModel.YourData.Done += UpdateClasses;
+            this._tabControl1.SelectedIndexChanged += this.SelectedIndexChangeTabControl;
         }
 
         //更新所有按鈕的狀態
@@ -33,15 +37,36 @@ namespace Homework_選課系統
         //更新課程的變化
         private void UpdateCourse()
         {
-            _courseDataGridView.DataSource = _courseFormPresentationModel.GetCourseList();
-            _courseDataGridView2.DataSource = _courseFormPresentationModel.GetCourseList();
+            foreach (Control control in _tabControl1.SelectedTab.Controls)
+            {
+                if (control is DataGridView view)
+                {
+                    view.DataSource = _courseFormPresentationModel.GetCourseList();
+                }
+            }
+        }
+
+        //更新classes
+        private void UpdateClasses()
+        {            
+            _tabControl1.SuspendLayout();
+            this._tabControl1.SelectedIndexChanged -= this.SelectedIndexChangeTabControl;
+            _tabControl1.TabPages.Clear();
+            for (int index = 0; index < _yourData.AllClasses.Count(); index++)
+                this._tabControl1.TabPages.Add(ConstructTabPage(_yourData.AllClasses[index].Name, index));
+            _tabControl1.ResumeLayout(false);
+            this._tabControl1.SelectedIndexChanged += this.SelectedIndexChangeTabControl;
+            _tabControl1.SelectedIndex = _courseFormPresentationModel.CurrentTabPage;
+            _tabControl1.Refresh();
+            UpdateCourse();
         }
 
         //點選datagrid內部的格子事件
         private void ClickCourseDataGridView(object sender, DataGridViewCellEventArgs e)
         {
-            _courseDataGridView.EndEdit();
-            _courseFormPresentationModel.SetCourseIsChoosed(_courseDataGridView?.CurrentCell?.RowIndex, Convert.ToString(_courseDataGridView.CurrentRow.Cells[0].Value));
+            DataGridView dataGridView = ((DataGridView)sender);
+            dataGridView.EndEdit();
+            _courseFormPresentationModel.SetCourseIsChoosed(dataGridView?.CurrentCell?.RowIndex, Convert.ToString(dataGridView.CurrentRow.Cells[0].Value));
             _courseFormPresentationModel.IsCheckedCheckBox();
         }
 
@@ -57,14 +82,6 @@ namespace Homework_選課系統
         {
             CourseSelectionResultForm1 courseSelectionResultForm = new CourseSelectionResultForm1(_yourData);
             courseSelectionResultForm.Show();
-        }
-
-        //點擊第二個表單
-        private void ClickCourseDataGridView2(object sender, DataGridViewCellEventArgs e)
-        {
-            _courseDataGridView2.EndEdit();
-            _courseFormPresentationModel.SetCourseIsChoosed(_courseDataGridView2?.CurrentCell?.RowIndex, Convert.ToString(_courseDataGridView2.CurrentRow.Cells[0].Value));
-            _courseFormPresentationModel.IsCheckedCheckBox();
         }
 
         //當換tabpage時

@@ -35,8 +35,8 @@ namespace Homework_選課系統
             return result;
         }
 
-        const string COURSE_CONFLICT = "衝堂: ";
-        const string COURSE_NAME_REPEAT = "同名: ";
+        const string COURSE_CONFLICT = "衝堂:";
+        const string COURSE_NAME_REPEAT = "同名:";
         const string CHANGE_LINE = "\n";
 
         //回傳所有衝堂的課程名稱，若沒有則回傳空字串;

@@ -21,6 +21,14 @@ namespace Homework_選課系統
 
         private const string POSITIVE = "True";
         private readonly Data _yourData;
+        public Data YourData
+        {
+            get
+            {
+                return _yourData;
+            }
+        }
+
         private readonly CourseWebCrawlerModel _courseWebCrawlerModel;
 
         public CourseFormPresentationModel(CourseWebCrawlerModel courseWebCrawlerModel, Data inputData)
@@ -28,6 +36,7 @@ namespace Homework_選課系統
             _courseWebCrawlerModel = courseWebCrawlerModel;
             _yourData = inputData;
             _yourData.CourseChanged += RefreshAllCourseList;
+            _allCourseList = new List<string[]>();
             CurrentTabPage = 0;
         }
 
@@ -68,7 +77,7 @@ namespace Homework_選課系統
         //設置所選的課是否被勾選
         public void SetCourseIsChoosed(int? rowIndex, string result)
         {
-            if(rowIndex != null || result != null)
+            if(rowIndex != null && result != null)
                 CourseList[(int)rowIndex][0] = result;
         }
 
@@ -80,10 +89,10 @@ namespace Homework_選課系統
             {
                 for (int index = _allCourseList.Count() - 1; index >= 0; index--)
                 {
-                    if (_allCourseList.ElementAt(index)[0] == POSITIVE)
+                    if (_allCourseList[index][0] == POSITIVE)
                     {
                         _yourData.AddCourse(new Course(_allCourseList[index]));
-                        _allCourseList.ElementAt(index)[0] = "False";
+                        _allCourseList[index][0] = "False";
                         _allCourseList.RemoveAt(index);
                     }
                 }

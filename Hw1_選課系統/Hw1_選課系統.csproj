@@ -51,9 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassTimePeriod.cs" />
+    <Compile Include="Model\ClassTimePeriod.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Course2.cs" />
+    <Compile Include="PresentationModel\ImportCourseProgressFormPresentationModel.cs" />
+    <Compile Include="View\ImportCourseProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ImportCourseProgressForm.Designer.cs">
+      <DependentUpon>ImportCourseProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentationModel\CourseManageFormPresentationModel.cs" />
     <Compile Include="View\CourseForm.cs">
       <SubType>Form</SubType>
@@ -86,6 +93,9 @@
     <Compile Include="View\CourseManageForm.Designer.cs">
       <DependentUpon>CourseManageForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ImportCourseProgressForm.resx">
+      <DependentUpon>ImportCourseProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CourseForm.resx">
       <DependentUpon>CourseForm.cs</DependentUpon>
     </EmbeddedResource>
